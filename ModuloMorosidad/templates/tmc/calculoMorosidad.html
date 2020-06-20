@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% block content %}
+    <body>
+      <label for="monto">Valor UF:{{ uf }}</label>
+    <form method="post" action="/tmc/">{% csrf_token %}
+        <label for="monto">Monto del Credito solicitado:</label>
+        <input required type="text" id="monto" name="monto"><br><br>
+        <label for="startmonto">Seleccione Fecha credito:</label>
+        <input type="date" name="startmonto" name="trip-start"
+
+               min="2020-01-01" max="2020-20-06">
+
+        <label for="finmonto">Seleccione Fecha maximo pago:</label>
+        <input type="date" name="finmonto" name="trip-start"
+               value="2020-01-01"
+               min="2020-01-01" max="2020-20-06"><br><br>
+
+        <label for="fpago">Seleccione Fecha de pago:</label>
+        <input type="date" name="fpago" name="trip-start"
+               value="2020-01-01"
+               min="2020-01-01" max="2020-20-06">
+
+
+        <label for="mora">MONTO EN UF:</label>
+        <input disabled type="text" id="montouf" name="montouf" value="{{ calculouf }}"><br><br>
+
+        <input type="submit" value="Calcular"><br><br>
+        <label for="mora">TMC CALCULADO:</label>
+        <label for="mora">{{ total}}{{ totalm }}</label><br><br>
+
+    </form>
+    </body>
+{% endblock %}
+</html>
